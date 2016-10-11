@@ -9,6 +9,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathDashPathEffect;
 import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -46,17 +47,18 @@ public class SimplyDrawnView extends View {
         //Draw red line
         mPaint.setColor(Color.RED); mPaint.setStrokeWidth(10);
 
-        //Draw green lines
+        mPaint.setColor(Color.GREEN);//Draw green lines
+        mPaint.setStrokeWidth(21.0f);
+        canvas.drawLine(mWidth, 500, -1000, mHeight, mPaint);//Draw Text
 
-        //Draw Text
-
-        //Draw Text on a Path
-
-        //Draw filled, opaque, and open ovals
+        mPath.addCircle(500f, 1000f, 150f, Path.Direction.CCW);//Draw Text on a Path
+        mPaint.setColor(Color.BLUE);
+        mPaint.setTextSize(81);
+        canvas.drawTextOnPath("Something is floating here", mPath, 50f, 300f, mPaint);//Draw filled, opaque, and open ovals
 
         //Draw bee bitmap
-        Drawable b = getResources().getDrawable(R.drawable.bee,null);
-
+        BitmapDrawable b = (BitmapDrawable) getResources().getDrawable(R.drawable.bee,null);
+        canvas.drawBitmap(b.getBitmap(), 300f, 800f, mPaint);
         //Add another image to drawable and draw it
 
     }
